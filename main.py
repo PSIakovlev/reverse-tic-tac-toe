@@ -1,3 +1,6 @@
+"""
+Игра 'обратные крестики-нолики'.
+"""
 from tkinter import Tk, Button
 from random import randint
 
@@ -10,6 +13,9 @@ SIZE = 10
 
 
 def new_game():
+    """
+    Функция нажатия кнопки "new game"
+    """
     for x in range(SIZE):
         for y in range(SIZE):
             field[x][y]['text'] = ' '
@@ -21,6 +27,9 @@ def new_game():
 
 
 def click(x, y):
+    """
+    Функия нажатия кнопки на поле
+    """
     if game_run and field[x][y]['text'] == ' ':
         field[x][y]['text'] = 'X'
         global cross_count
@@ -32,6 +41,9 @@ def click(x, y):
 
 
 def check_defeat():
+    """
+    Функция проверяет появился ли проигравший.
+    """
     for i in range(SIZE):
         for j in range(SIZE):
             try:
@@ -63,11 +75,17 @@ def check_defeat():
 
 
 def check_line(a, b, c, d, e):
+    """
+    Проверяет есть ли линия из 5-ти одинаковых элементов
+    """
     if a['text'] == b['text'] == c['text'] == d['text'] == e['text'] != " ":
         defeat(a, b, c, d, e)
 
 
 def computer_move():
+    """
+    Функия игры компьютера
+    """
     while True:
         x = randint(0, SIZE - 1)
         y = randint(0, SIZE - 1)
@@ -77,12 +95,18 @@ def computer_move():
 
 
 def defeat(a, b, c, d, e):
+    """
+    Функция поржения
+    """
     a['background'] = b['background'] = c['background'] = d['background'] = e['background'] = 'red'
     global game_run
     game_run = False
 
 
 def start():
+    """
+    Функция начала игры
+    """
     for row in range(SIZE):
         line = []
         for col in range(SIZE):
